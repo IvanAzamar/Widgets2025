@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.widgets2025.databinding.ActivityMainBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
@@ -29,7 +30,9 @@ private lateinit var binding: ActivityMainBinding // lateinit porque se iniciali
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        /*findViewById<MaterialButton>(R.id.btnBuy).setOnClickListener {
+
+        /*
+        findViewById<MaterialButton>(R.id.btnBuy).setOnClickListener {
             Toast.makeText(this, "Sale", Toast.LENGTH_SHORT).show()
         }
         findViewById<MaterialButton>(R.id.btnSkip).setOnLongClickListener {
@@ -42,14 +45,16 @@ private lateinit var binding: ActivityMainBinding // lateinit porque se iniciali
             Toast.makeText(this, "Sale", Toast.LENGTH_SHORT).show()
         }
 
-        binding.btnSkip.setOnLongClickListener {
-            binding.Card.visibility= View.GONE
-            true
+        binding.btnSkip.setOnClickListener {
+            binding.Card.visibility = View.GONE
         }
 
-val url:String="https://www.tecnm.mx/images/tecnm_virtual/tecnm.png"
+val url:String="https://static.promodescuentos.com/events/raw/LvpsS/1_1/fs/895x577/qt/80/1_1.jpg"
         Glide.with(this)
             .load(url)
+            .diskCacheStrategy(DiskCacheStrategy.DATA)
+            .placeholder(R.drawable.baseline_image_search_24)
+            .error(R.drawable.baseline_broken_image_24)
             .into(binding.imgUrl)
     }
 

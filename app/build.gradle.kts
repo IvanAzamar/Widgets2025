@@ -34,9 +34,9 @@ android {
         jvmTarget = "11"
     }
 //habilitar binding el acceso a las vistas es más sencillo
-    buildFeatures {
-        viewBinding = true
-    }
+   buildFeatures{
+       viewBinding=true
+   }
 }
 
 dependencies {
