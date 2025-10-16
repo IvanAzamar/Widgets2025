@@ -53,6 +53,10 @@ private lateinit var binding: ActivityMainBinding // lateinit porque se iniciali
               carga(binding.EtUrl.text.toString())
         }
 
+        binding.btnSkip.setOnClickListener {
+            binding.Card.visibility= View.GONE
+        }
+
         binding.emailTv.setOnFocusChangeListener { view, focus ->
             if (focus){
                 binding.emailTv.setBackgroundColor(Color.GRAY)
