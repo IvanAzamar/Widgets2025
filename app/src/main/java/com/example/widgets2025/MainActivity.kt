@@ -1,5 +1,6 @@
 package com.example.widgets2025
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.widgets2025.databinding.ActivityMainBinding
@@ -40,19 +42,32 @@ private lateinit var binding: ActivityMainBinding // lateinit porque se iniciali
             true
         }*/
 //binding para acceder a las vistas
+        carga("https://huimanguillo.tecnm.mx/wp-content/uploads/2021/05/WhatsApp-Image-2021-04-20-at-1.00.16-PM-e1737412695280.jpeg")
 
         binding.btnBuy.setOnClickListener {
             Toast.makeText(this, "Sale", Toast.LENGTH_SHORT).show()
+            carga(binding.EtUrl.text.toString())
         }
 
-        binding.btnSkip.setOnClickListener {
-            binding.Card.visibility = View.GONE
+        binding.EtUrl.addTextChangedListener{
+              carga(binding.EtUrl.text.toString())
         }
 
-val url:String="https://static.promodescuentos.com/events/raw/LvpsS/1_1/fs/895x577/qt/80/1_1.jpg"
-        Glide.with(this)
+        binding.emailTv.setOnFocusChangeListener { view, focus ->
+            if (focus){
+                binding.emailTv.setBackgroundColor(Color.GRAY)
+                binding.emailTv.setTextColor(Color.BLUE)
+            }else{
+                binding.emailTv.setBackgroundColor(Color.WHITE)
+            }
+        }
+
+    }
+
+    private fun carga(url: String?){
+             Glide.with(this)
             .load(url)
-            .diskCacheStrategy(DiskCacheStrategy.DATA)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .placeholder(R.drawable.baseline_image_search_24)
             .error(R.drawable.baseline_broken_image_24)
             .into(binding.imgUrl)

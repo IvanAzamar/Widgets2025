@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Widgets2025</string>
+    <string name="email">Ingrese su correo electrónico</string>
+    <string name="url">Ingrese la url</string>
 </resources>
