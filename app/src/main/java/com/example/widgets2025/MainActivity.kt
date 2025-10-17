@@ -23,7 +23,7 @@ private lateinit var binding: ActivityMainBinding // lateinit porque se iniciali
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMainBinding.inflate(layoutInflater) //es importante porque infla el layout
+        binding = ActivityMainBinding.inflate(layoutInflater) //es importante porque infla el layout
         setContentView(binding.root)
         enableEdgeToEdge()
         //setContentView(R.layout.activity_main)
@@ -49,24 +49,47 @@ private lateinit var binding: ActivityMainBinding // lateinit porque se iniciali
             carga(binding.EtUrl.text.toString())
         }
 
-        binding.EtUrl.addTextChangedListener{
-              carga(binding.EtUrl.text.toString())
+        binding.EtUrl.addTextChangedListener {
+            carga(binding.EtUrl.text.toString())
         }
 
         binding.btnSkip.setOnClickListener {
-            binding.Card.visibility= View.GONE
+            binding.Card.visibility = View.GONE
         }
 
         binding.emailTv.setOnFocusChangeListener { view, focus ->
-            if (focus){
+            if (focus) {
                 binding.emailTv.setBackgroundColor(Color.GRAY)
                 binding.emailTv.setTextColor(Color.BLUE)
-            }else{
+            } else {
                 binding.emailTv.setBackgroundColor(Color.WHITE)
             }
         }
 
+        binding.ChipURL.setOnCheckedChangeListener { chip, isChecked ->
+            if (isChecked)
+                binding.EtUrl.setText(chip.text.toString())
+        }
+
+        binding.ChipURL.setOnCloseIconClickListener {
+        binding.ChipURL.visibility =View.GONE
+        }
+
+        binding.Slider1.addOnChangeListener { slider, value, fromUser ->
+            binding.tvTitlealt.text = "Gracias por calificarnos con : " +value.toInt().toString()
+        }
+
+        binding.Grupo1.addOnButtonCheckedListener { group, checkedId, isChecked ->
+
+            when(checkedId){
+                R.id.btnGroupA -> binding.tvTitlealt.setTextColor(Color.RED)
+                R.id.btnGroupB -> binding.tvTitlealt.setTextColor(Color.GREEN)
+                R.id.btnGroupC -> binding.tvTitlealt.setTextColor(Color.BLUE)
+            }
+        }
+
     }
+
 
     private fun carga(url: String?){
              Glide.with(this)
