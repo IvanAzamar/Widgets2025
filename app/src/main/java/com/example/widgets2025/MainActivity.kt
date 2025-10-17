@@ -15,7 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.widgets2025.databinding.ActivityMainBinding
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
-
+//hola soy jose luis
 class MainActivity : AppCompatActivity() {
 private lateinit var binding: ActivityMainBinding // lateinit porque se inicializa después
 
