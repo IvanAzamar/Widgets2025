@@ -18,7 +18,7 @@ import com.google.android.material.card.MaterialCardView
 
 class MainActivity : AppCompatActivity() {
 private lateinit var binding: ActivityMainBinding // lateinit porque se inicializa después
-
+// Daniel Guevara
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
