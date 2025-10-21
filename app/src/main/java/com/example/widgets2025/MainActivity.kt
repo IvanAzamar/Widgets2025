@@ -55,6 +55,8 @@ private lateinit var binding: ActivityMainBinding // lateinit porque se iniciali
 
         binding.btnSkip.setOnClickListener {
             binding.Card.visibility = View.GONE
+            //val intencion= Intent(this, MainActivity2::class.java)
+           // startActivity(intencion)
         }
 
         binding.emailTv.setOnFocusChangeListener { view, focus ->
